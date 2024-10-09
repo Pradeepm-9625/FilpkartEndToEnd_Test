@@ -1,0 +1,13 @@
+Feature: To validate the Flipkart APllication
+
+Background :
+
+Given Launch the Flipkart Application
+When Close the popup
+Then It should navigate to the Home page
+
+Scenario: To Validate the search functionality
+
+Given User enter the text in the search filed
+When Click the serach button
+Then It should navigate to the search results page and display the relevant results
