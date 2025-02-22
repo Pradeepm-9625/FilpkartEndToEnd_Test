@@ -5,17 +5,21 @@ import java.io.IOException;
 import com.Pages.Searchpage;
 import com.baseclass.Library;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class SerachMobile_Testcase extends Library{
 	Searchpage sp;
-	@Given("Launch the Flipkart Application")
-	public void launch_the_flipkart_application() throws IOException {
-		lanchingApplications();
-	}
+   
+    @Given("Launch the Flipkart Application")
+    public void launch_the_flipkart_application() throws IOException {
+        System.out.println("Application launched.");
+        launchingApplications();  // Launch application before each scenario
 
+    }
 	@When("Close the popup")
 	public void close_the_popup() {
 		System.out.println(driver.getTitle());
@@ -44,4 +48,17 @@ public class SerachMobile_Testcase extends Library{
 	public void it_should_navigate_to_the_search_results_page_and_display_the_relevant_results() {
 	  sp.Results();
 	}
+	
+	
+	@Then("extraxt the result and print in console")
+	public void extract_the_result_and_print_in_console() {
+	   sp.printentireresult();
+	   System.out.println("*******************************************");
+	}
+
+	@Then("print the third result and keep it in the console")
+	public void print_the_third_result_and_keep_it_in_the_console() {
+	   sp.Print3rdresult();
+	}
+	
 }
