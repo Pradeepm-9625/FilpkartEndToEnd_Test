@@ -1,3 +1,5 @@
+image: maven:3.9.9-eclipse-temurin-23  # Ensures Maven & Java 23 are available
+
 stages:
   - build
   - test
@@ -6,6 +8,9 @@ stages:
 build-job:
   stage: build
   script:
+    - echo "Checking Maven & Java versions..."
+    - mvn -version
+    - java -version
     - echo "Compiling the code..."
     - mvn clean compile
     - echo "Compile complete."
