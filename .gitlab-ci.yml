@@ -1,15 +1,33 @@
 stages:
   - build
   - test
+  - deploy
 
 build-job:
   stage: build
   script:
-    - echo "Building the project..."
+    - echo "Compiling the code..."
     - mvn clean compile
+    - echo "Compile complete."
 
-test-job:
+unit-test-job:
   stage: test
   script:
-    - echo "Running tests..."
+    - echo "Running unit tests..."
     - mvn test
+    - echo "Unit tests completed successfully."
+
+lint-test-job:
+  stage: test
+  script:
+    - echo "Checking code quality..."
+    - mvn checkstyle:check
+    - echo "No lint issues found."
+
+deploy-job:
+  stage: deploy
+  environment: production
+  script:
+    - echo "Deploying application..."
+    - mvn package
+    - echo "Application successfully deployed."
